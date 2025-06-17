@@ -37,6 +37,58 @@ cp .env.template .env
 python main.py
 ```
 
+## 🧪 Testing the Template
+
+**No API keys required!** Test the template functionality immediately:
+
+### Quick Demo
+```bash
+python demo.py
+```
+Shows a simple demonstration of agent creation and workflow simulation.
+
+### Comprehensive Testing
+```bash
+python test/test_agents.py
+```
+Runs a full test suite that verifies:
+- ✅ Agent instantiation
+- ✅ Tool functionality
+- ✅ Configuration loading
+- ✅ Mock crew execution
+
+### Test Results
+The test suite will show you exactly what's working:
+```
+🎯 CrewAI Agent Template - Test Suite
+============================================================
+🧪 Testing Individual Agents...
+✅ Researcher Agent created successfully!
+✅ Analyst Agent created successfully!
+
+🔧 Testing Tools...
+✅ Example Tool executed successfully!
+
+📋 Testing Configuration Loader...
+✅ Configuration loaded successfully!
+✅ 2 agents created from configuration!
+✅ 2 tasks created from configuration!
+
+🚀 Testing Mock Crew Execution...
+✅ Mock crew execution completed successfully!
+
+📋 Test Summary
+============================================================
+✅ PASS - Individual Agents
+✅ PASS - Tools
+✅ PASS - Configuration Loader
+✅ PASS - Mock Crew Execution
+
+Results: 4/4 tests passed
+
+🎉 All tests passed! Your CrewAI template is working correctly.
+```
+
 ## 📁 Project Structure
 
 ```
@@ -45,12 +97,16 @@ crewai-agent-template/
 │   ├── researcher_agent.py
 │   └── analyst_agent.py
 ├── config/                 # YAML configuration files
-│   └── default_agent_setup.yaml
+│   ├── default_agent_setup.yaml
+│   └── test_setup.yaml
 ├── tools/                  # Custom tools for agents
 │   └── example_tool.py
 ├── utils/                  # Utility functions
 │   └── loader.py
+├── test/                   # Test suite
+│   └── test_agents.py
 ├── main.py                 # Entry point
+├── demo.py                 # Demo script
 ├── README.md              # This file
 ├── requirements.txt       # Dependencies
 ├── .env.template          # Environment variables template
@@ -241,13 +297,15 @@ This template is designed to be:
 - **Extensible**: Easy to add new agents, tools, and configurations
 - **Production-Ready**: Includes error handling, logging, and security best practices
 - **Well-Documented**: Comprehensive examples and documentation
+- **Testable**: Complete test suite that works without API keys
 
 ### For Template Users
 
 1. **Fork this repository** to your GitHub account
 2. **Clone your fork** locally
-3. **Customize** the agents, tools, and configurations for your needs
-4. **Deploy** your agentic AI solution
+3. **Test the template** with `python test/test_agents.py`
+4. **Customize** the agents, tools, and configurations for your needs
+5. **Deploy** your agentic AI solution
 
 ### For Contributors
 

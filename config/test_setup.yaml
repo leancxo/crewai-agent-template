@@ -1,0 +1,36 @@
+# Test Agent Setup Configuration
+# This configuration is designed for testing the template without API keys
+
+crew:
+  name: "Test Crew"
+  description: "A test crew to verify the template functionality"
+  agents:
+    - name: "researcher"
+      class: "ResearcherAgent"
+      module: "agents.researcher_agent"
+      enabled: true
+      order: 1
+      
+    - name: "analyst"
+      class: "AnalystAgent"
+      module: "agents.analyst_agent"
+      enabled: true
+      order: 2
+
+tasks:
+  - name: "Test Research Task"
+    description: "Demonstrate research capabilities with mock data"
+    agent: "researcher"
+    expected_output: "Mock research findings about AI agent development"
+    
+  - name: "Test Analysis Task"
+    description: "Demonstrate analysis capabilities with mock data"
+    agent: "analyst"
+    expected_output: "Mock analysis results and recommendations"
+    context: "Use the research findings from the previous task"
+
+# Test settings - minimal configuration
+settings:
+  verbose: true
+  max_iterations: 1
+  memory: false 
