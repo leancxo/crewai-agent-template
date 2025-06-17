@@ -1,0 +1,36 @@
+# Default Agent Setup Configuration
+# This file defines the default agents and their configuration for the CrewAI template
+
+crew:
+  name: "Default Crew"
+  description: "A default crew with researcher and analyst agents"
+  agents:
+    - name: "researcher"
+      class: "ResearcherAgent"
+      module: "agents.researcher_agent"
+      enabled: true
+      order: 1
+      
+    - name: "analyst"
+      class: "AnalystAgent"
+      module: "agents.analyst_agent"
+      enabled: true
+      order: 2
+
+tasks:
+  - name: "Research Task"
+    description: "Gather information and data for analysis"
+    agent: "researcher"
+    expected_output: "Comprehensive research findings and data"
+    
+  - name: "Analysis Task"
+    description: "Analyze the research findings and provide insights"
+    agent: "analyst"
+    expected_output: "Detailed analysis with insights and recommendations"
+    context: "Use the research findings from the previous task"
+
+# Global settings
+settings:
+  verbose: true
+  max_iterations: 3
+  memory: true 

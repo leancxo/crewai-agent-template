@@ -1,0 +1,106 @@
+# cursor.rules
+
+# 🎯 Project Purpose:
+# This workspace is a reusable CrewAI agent template.
+# It is designed to launch agentic AI projects quickly and consistently by providing:
+# - A modular agent architecture
+# - Config-driven agent deployment
+# - Reusable tools and loaders
+# - Easy customization per use case
+
+# 🧠 Cursor Behavior Guidelines:
+rules:
+  - Do not ask for overall purpose — assume this is a CrewAI-based, multi-agent framework.
+  - Always respect the folder structure:
+      - agents/ → where agent classes live
+      - config/ → YAML files defining agent setups
+      - tools/ → Tool scripts agents can call
+      - utils/ → Helpers like config loaders
+      - main.py → Entrypoint script to launch a crew
+      - .env.template → Do not overwrite
+      - README.md → Provide simple setup and usage instructions
+
+  - When asked to "add an agent":
+      - Create a new file in `agents/`
+      - Name the class with a clear purpose (e.g., `SchedulerAgent`, `VerifierAgent`)
+      - Accept `name`, `role`, `goal`, and `tools` as constructor parameters
+      - Ensure compatibility with dynamic YAML config loading
+      - Follow the pattern: static `create()` method returning Agent instance
+      - Include comprehensive backstory and goal descriptions
+      - Use verbose=True for debugging, allow_delegation=False by default
+
+  - When asked to "add a config":
+      - Create a new YAML file in `config/`
+      - Follow the format in `default_agent_setup.yaml`
+      - Each agent config must map to a class in `agents/`
+      - Include crew name, description, agents list, tasks, and settings
+      - Use descriptive task names and clear expected outputs
+      - Set appropriate order for agent execution
+
+  - When asked to "run the project":
+      - Use `main.py`
+      - Load YAML config using `utils/loader.py`
+      - Assemble and run the crew using CrewAI methods
+      - Handle environment variables with python-dotenv
+      - Provide clear error messages for missing configs or API keys
+
+  - When adding tools:
+      - Place them in `tools/`
+      - Include a clear interface like `run()` or `__call__()`
+      - Tools should be easy to assign to agents via config
+      - Inherit from `langchain.tools.BaseTool`
+      - Implement both `_run` and `_arun` methods
+      - Include proper error handling and validation
+
+  - When installing libraries:
+      - Add to `requirements.txt`
+      - Keep dependencies minimal and aligned with CrewAI, YAML parsing, and project needs
+      - Use version constraints (>=) for flexibility
+      - Comment out optional dependencies that can be uncommented as needed
+
+  - Never delete or overwrite the following without explicit instruction:
+      - .env.template
+      - README.md
+      - cursor.rules
+      - default_agent_setup.yaml
+
+  - Code quality standards:
+      - Use type hints for all function parameters and return values
+      - Include comprehensive docstrings for all classes and methods
+      - Follow PEP 8 style guidelines
+      - Use f-strings for string formatting
+      - Handle exceptions gracefully with meaningful error messages
+
+  - Agent development patterns:
+      - Keep agents focused on specific roles and responsibilities
+      - Use clear, descriptive goals that align with the agent's purpose
+      - Write detailed backstories that establish expertise and context
+      - Minimize tool dependencies to essential functions only
+      - Test agents individually before adding to crews
+
+  - Configuration management:
+      - Use environment variables for API keys and sensitive data
+      - Validate configuration files at startup
+      - Support multiple configuration profiles for different use cases
+      - Provide clear examples and documentation for configuration options
+      - Use the ConfigLoader class for all configuration operations
+
+  - Security and best practices:
+      - Never hardcode API keys or sensitive information
+      - Use .env files for local development
+      - Implement proper error handling for API calls
+      - Log operations for debugging and monitoring
+      - Consider rate limiting for external API integrations
+
+  - Performance considerations:
+      - Minimize unnecessary API calls to LLM providers
+      - Use efficient data structures and algorithms
+      - Implement caching where appropriate
+      - Monitor memory usage and resource consumption
+      - Consider async operations for I/O-bound tasks
+
+# 💡 Philosophy:
+# This workspace is designed to be cloned per project and adapted. All code should be modular, clean, and easily replaceable.
+# Cursor should assume the user is launching real-world projects using this framework for client work or internal R&D.
+# Focus on production-ready code that can be deployed and maintained in enterprise environments.
+# Prioritize clarity, maintainability, and extensibility over clever optimizations. 
