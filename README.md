@@ -1,10 +1,29 @@
-# CrewAI Agent Template
+# Pest Pro University - AI Sales Automation
 
-A reusable template for creating agentic AI projects using [CrewAI](https://github.com/crewAIInc/crewAI). This template provides a structured approach to building multi-agent systems with configurable agents, tasks, and tools.
+An AI-powered sales automation system using [CrewAI](https://github.com/crewAIInc/crewAI) to research pest control companies, analyze training opportunities, and create targeted sales campaigns for [Pest Pro University](https://www.pestprouniversity.com/).
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![CrewAI](https://img.shields.io/badge/CrewAI-0.130.0+-green.svg)](https://github.com/crewAIInc/crewAI)
+
+## 🎯 About Pest Pro University
+
+**Pest Pro University** is the leading online training platform for pest control professionals, offering:
+- **No contracts** - cancel anytime
+- **Unlimited users** per branch location
+- **CEU credit approved** in 22 states
+- **Three comprehensive training tracks:**
+  - Service Technicians (19+ modules)
+  - Sales & Office Staff
+  - Business Management
+
+## 🤖 Sales Automation System
+
+This AI crew automates the entire lead generation and sales process:
+
+1. **🔍 Market Research** - Finds pest control companies in target markets
+2. **📊 Opportunity Analysis** - Identifies training needs and value propositions  
+3. **✉️ Campaign Creation** - Generates personalized outreach materials
 
 ## 🚀 Quick Start
 
@@ -15,10 +34,10 @@ A reusable template for creating agentic AI projects using [CrewAI](https://gith
 
 ### Installation
 
-1. **Clone this template:**
+1. **Clone this repository:**
 ```bash
-git clone https://github.com/yourusername/crewai-agent-template.git
-cd crewai-agent-template
+git clone https://github.com/leancxo/pestprouniversity_crewai-agent-sales.git
+cd pestprouniversity_crewai-agent-sales
 ```
 
 2. **Install dependencies:**
@@ -32,290 +51,144 @@ cp .env.template .env
 # Edit .env with your API keys
 ```
 
-4. **Run the template:**
-```bash
-python main.py
-```
+## 🧪 Demo & Testing
 
-## 🧪 Testing the Template
-
-**No API keys required!** Test the template functionality immediately:
+**No API keys required!** Test the system immediately:
 
 ### Quick Demo
 ```bash
-python demo.py
+python pest_pro_demo.py
 ```
-Shows a simple demonstration of agent creation and workflow simulation.
+Shows a complete demonstration of the sales automation workflow with sample outputs.
 
-### Comprehensive Testing
+### Original Template Testing
 ```bash
 python test/test_agents.py
 ```
-Runs a full test suite that verifies:
-- ✅ Agent instantiation
-- ✅ Tool functionality
-- ✅ Configuration loading
-- ✅ Mock crew execution
-
-### Test Results
-The test suite will show you exactly what's working:
-```
-🎯 CrewAI Agent Template - Test Suite
-============================================================
-🧪 Testing Individual Agents...
-✅ Researcher Agent created successfully!
-✅ Analyst Agent created successfully!
-
-🔧 Testing Tools...
-✅ Example Tool executed successfully!
-
-📋 Testing Configuration Loader...
-✅ Configuration loaded successfully!
-✅ 2 agents created from configuration!
-✅ 2 tasks created from configuration!
-
-🚀 Testing Mock Crew Execution...
-✅ Mock crew execution completed successfully!
-
-📋 Test Summary
-============================================================
-✅ PASS - Individual Agents
-✅ PASS - Tools
-✅ PASS - Configuration Loader
-✅ PASS - Mock Crew Execution
-
-Results: 4/4 tests passed
-
-🎉 All tests passed! Your CrewAI template is working correctly.
-```
+Runs the full test suite to verify all components are working.
 
 ## 📁 Project Structure
 
 ```
-crewai-agent-template/
-├── agents/                 # Agent definitions
-│   ├── researcher_agent.py
-│   └── analyst_agent.py
-├── config/                 # YAML configuration files
-│   ├── default_agent_setup.yaml
-│   └── test_setup.yaml
-├── tools/                  # Custom tools for agents
-│   └── example_tool.py
-├── utils/                  # Utility functions
-│   └── loader.py
-├── test/                   # Test suite
-│   └── test_agents.py
-├── main.py                 # Entry point
-├── demo.py                 # Demo script
-├── README.md              # This file
-├── requirements.txt       # Dependencies
-├── .env.template          # Environment variables template
-├── .gitignore            # Git ignore rules
-├── cursor.rules           # Cursor IDE rules
-└── LICENSE               # MIT License
+pestprouniversity_crewai-agent-sales/
+├── agents/                           # AI Sales Agents
+│   ├── researcher_agent.py          # Market research specialist
+│   ├── analyst_agent.py             # Opportunity analyst
+│   └── sales_campaign_agent.py      # Campaign creator
+├── config/                           # Configuration files
+│   └── default_agent_setup.yaml     # Sales crew configuration
+├── tools/                            # Specialized tools
+│   ├── pest_control_research_tool.py # Market research tool
+│   └── example_tool.py               # Original template tool
+├── utils/                            # Utility functions
+│   └── loader.py                     # Configuration loader
+├── test/                             # Test suite
+│   └── test_agents.py                # Agent testing
+├── main.py                           # Production entry point
+├── pest_pro_demo.py                  # Sales automation demo
+├── demo.py                           # Original template demo
+├── README.md                         # This file
+├── requirements.txt                  # Dependencies
+└── LICENSE                           # MIT License
 ```
 
 ## 🔧 How to Use
 
-### Running the Template
+### Running Sales Campaigns
 
-The template comes with a default configuration that includes:
-- **Researcher Agent**: Gathers information and data
-- **Analyst Agent**: Analyzes data and provides insights
-
-To run with the default configuration:
+**For target market campaigns:**
 ```bash
 python main.py
 ```
 
-To run with a custom configuration:
+**With custom configuration:**
 ```bash
-python main.py config/your_config.yaml
+python main.py config/custom_market.yaml
 ```
 
-### Adding New Agents
+### Creating Market-Specific Campaigns
 
-1. Create a new agent file in `agents/`:
+1. **Specify your target market** in the configuration
+2. **Run the automation crew** to generate campaigns
+3. **Review the generated materials** before outreach
+4. **Execute campaigns** via email and phone
+
+### Sample Workflow
+
 ```python
-from crewai import Agent
-from tools.example_tool import ExampleTool
-
-class YourAgent:
-    @staticmethod
-    def create():
-        return Agent(
-            name="Your Agent",
-            role="Your Role",
-            goal="Your goal description",
-            backstory="Your agent's backstory",
-            verbose=True,
-            allow_delegation=False,
-            tools=[ExampleTool()]
-        )
+# The system will:
+# 1. Research pest control companies in your market
+# 2. Analyze training needs and pain points
+# 3. Create personalized email templates
+# 4. Generate phone scripts
+# 5. Provide value proposition talking points
 ```
 
-2. Add the agent to your configuration file:
-```yaml
-crew:
-  agents:
-    - name: "your_agent"
-      class: "YourAgent"
-      module: "agents.your_agent"
-      enabled: true
-      order: 3
-```
+## 📊 Expected Results
 
-### Adding Custom Tools
+Based on industry benchmarks:
+- **Email open rate:** 35-45%
+- **Response rate:** 8-12%
+- **Phone connection:** 25-30%
+- **Demo booking:** 15-20%
+- **Close rate:** 25-35%
 
-1. Create a new tool in `tools/`:
-```python
-from langchain.tools import BaseTool
+**Typical campaign (12 prospects):**
+- 4-5 demos booked
+- 1-2 new customers
+- $6,000-15,000 ARR potential
 
-class YourTool(BaseTool):
-    name: str = "your_tool"
-    description: str = "Description of what your tool does"
-    
-    def _run(self, query: str) -> str:
-        # Your tool logic here
-        return "Tool result"
-```
+## 🎯 Key Features
 
-2. Import and use the tool in your agents.
+### Intelligent Market Research
+- Finds pest control companies by location
+- Identifies decision makers and contact info
+- Analyzes company size and service offerings
+- Assesses current training challenges
 
-### Configuration Files
+### Smart Opportunity Analysis  
+- Calculates training cost savings potential
+- Identifies specific pain points (CEU compliance, costs, standardization)
+- Determines best value proposition approach
+- Prioritizes prospects by likelihood to convert
 
-Configuration files use YAML format and define:
-- **Crew**: Name, description, and agent list
-- **Tasks**: Task descriptions, assigned agents, and expected outputs
-- **Settings**: Global settings like verbosity and memory
+### Personalized Campaign Creation
+- Custom email templates for each prospect
+- Phone scripts tailored to decision maker type
+- Value proposition calculators
+- Multi-touch follow-up sequences
 
-Example configuration structure:
-```yaml
-crew:
-  name: "My Crew"
-  description: "Description of what this crew does"
-  agents:
-    - name: "agent1"
-      class: "AgentClass"
-      module: "agents.agent_file"
-      enabled: true
-      order: 1
+## 💡 Value Propositions
 
-tasks:
-  - name: "Task 1"
-    description: "What this task does"
-    agent: "agent1"
-    expected_output: "Expected result"
+The system emphasizes Pest Pro University's key differentiators:
 
-settings:
-  verbose: true
-  max_iterations: 3
-  memory: true
-```
+- **No Contracts** - Cancel anytime flexibility
+- **Unlimited Users** - Scale without per-seat costs  
+- **CEU Compliance** - Approved in 22 states
+- **Cost Savings** - 40-60% reduction vs traditional training
+- **Convenience** - Online, available 24/7
+- **Comprehensive** - Service tech, sales, and business training
 
-## 🛠️ Customization
+## 🔌 Integration Ready
 
-### Environment Variables
+Easy to integrate with:
+- CRM systems (Salesforce, HubSpot, Pipedrive)
+- Email platforms (Mailchimp, SendGrid)
+- Phone systems (Outreach, SalesLoft)
+- Analytics tools (Google Analytics, Mixpanel)
 
-Copy `.env.template` to `.env` and configure:
-- `OPENAI_API_KEY`: Your OpenAI API key
-- `ANTHROPIC_API_KEY`: Your Anthropic API key (optional)
-- Other LLM provider keys as needed
+## 📞 Support
 
-### Adding New Configurations
+Questions about the system? Contact:
+- **Kurt** - kurt@pestprouniversity.com  
+- **Phone** - (801) 440-0271
 
-1. Create new YAML files in `config/`
-2. Define your agent setup, tasks, and settings
-3. Run with: `python main.py config/your_config.yaml`
+## 🚀 Next Steps
 
-### Extending the Template
+1. **Review** the demo output
+2. **Specify** your first target market
+3. **Run** the campaign generator
+4. **Execute** outreach campaigns
+5. **Track** results and optimize
 
-- **New Agent Types**: Add specialized agents for different domains
-- **Custom Tools**: Integrate with external APIs, databases, or services
-- **Task Templates**: Create reusable task patterns
-- **Monitoring**: Add logging and performance tracking
-
-## 📚 Examples
-
-### Basic Research Crew
-```yaml
-crew:
-  name: "Research Crew"
-  agents:
-    - name: "researcher"
-      class: "ResearcherAgent"
-      module: "agents.researcher_agent"
-    - name: "analyst"
-      class: "AnalystAgent"
-      module: "agents.analyst_agent"
-
-tasks:
-  - name: "Research Topic"
-    description: "Research the given topic thoroughly"
-    agent: "researcher"
-  - name: "Analyze Findings"
-    description: "Analyze research findings and provide insights"
-    agent: "analyst"
-```
-
-## 🤝 Contributing
-
-We welcome contributions! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Support
-
-For issues and questions:
-1. Check the [CrewAI documentation](https://docs.crewai.com/)
-2. Review the configuration examples in this repository
-3. Open an issue in this repository
-
-## 🙏 Acknowledgments
-
-- Built with [CrewAI](https://github.com/crewAIInc/crewAI) - Framework for orchestrating role-playing, autonomous AI agents
-- Inspired by the need for reusable, production-ready agent templates
-
----
-
-**Happy building with CrewAI! 🚀**
-
----
-
-## 📦 Publishing Information
-
-This template is designed to be:
-- **Forkable**: Clone and adapt for your specific use cases
-- **Extensible**: Easy to add new agents, tools, and configurations
-- **Production-Ready**: Includes error handling, logging, and security best practices
-- **Well-Documented**: Comprehensive examples and documentation
-- **Testable**: Complete test suite that works without API keys
-
-### For Template Users
-
-1. **Fork this repository** to your GitHub account
-2. **Clone your fork** locally
-3. **Test the template** with `python test/test_agents.py`
-4. **Customize** the agents, tools, and configurations for your needs
-5. **Deploy** your agentic AI solution
-
-### For Contributors
-
-We welcome contributions to make this template even better:
-- New agent types
-- Additional tools and integrations
-- Configuration examples
-- Documentation improvements
-- Bug fixes and performance optimizations
-
----
-
-**Star this repository if you find it helpful! ⭐** 
+Ready to automate your sales process? Let's start generating campaigns! 

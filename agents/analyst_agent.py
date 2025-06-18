@@ -1,20 +1,24 @@
 from crewai import Agent
-from tools.example_tool import ExampleTool
+from tools.pest_control_research_tool import PestControlResearchTool
 
 class AnalystAgent:
-    """An analyst agent that can process and interpret data."""
+    """A specialized sales opportunity analyst for pest control training solutions."""
     
     @staticmethod
     def create():
-        """Create and return a configured analyst agent."""
+        """Create and return a configured sales opportunity analyst agent."""
         return Agent(
-            name="Analyst",
-            role="Data Analyst",
-            goal="Analyze data and information to provide insights, trends, and actionable recommendations",
-            backstory="""You are a skilled data analyst with expertise in statistical analysis, 
-            trend identification, and data visualization. You excel at turning raw data into 
-            meaningful insights that drive decision-making.""",
+            name="Sales Opportunity Analyst",
+            role="Training Needs Assessment Specialist",
+            goal="Analyze pest control companies to identify specific training gaps, compliance needs, and create targeted value propositions for Pest Pro University solutions",
+            backstory="""You are a skilled sales analyst with deep expertise in the pest control industry 
+            and training sector. You understand regulatory requirements across different states, 
+            can assess company training needs based on their size and operations, and excel at 
+            identifying specific pain points that Pest Pro University can solve. You can calculate 
+            ROI for training investments, understand the value of CEU credits, and know how to 
+            position different training tracks (Service Tech, Sales/Office, Business Management) 
+            based on company profiles.""",
             verbose=True,
             allow_delegation=False,
-            tools=[ExampleTool()]
+            tools=[PestControlResearchTool()]
         ) 

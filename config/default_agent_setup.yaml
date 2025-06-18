@@ -1,36 +1,49 @@
-# Default Agent Setup Configuration
-# This file defines the default agents and their configuration for the CrewAI template
+# Pest Pro University Sales Automation Configuration
+# This file defines the agents and workflow for automated lead generation and sales campaigns
 
 crew:
-  name: "Default Crew"
-  description: "A default crew with researcher and analyst agents"
+  name: "Pest Pro University Sales Crew"
+  description: "An AI-powered sales automation crew that researches pest control companies, analyzes opportunities, and creates targeted sales campaigns"
   agents:
-    - name: "researcher"
+    - name: "market_researcher"
       class: "ResearcherAgent"
       module: "agents.researcher_agent"
       enabled: true
       order: 1
       
-    - name: "analyst"
+    - name: "opportunity_analyst"
       class: "AnalystAgent"
       module: "agents.analyst_agent"
       enabled: true
       order: 2
 
+    - name: "sales_campaign_creator"
+      class: "SalesCampaignAgent"
+      module: "agents.sales_campaign_agent"
+      enabled: true
+      order: 3
+
 tasks:
-  - name: "Research Task"
-    description: "Gather information and data for analysis"
-    agent: "researcher"
-    expected_output: "Comprehensive research findings and data"
+  - name: "Market Research Task"
+    description: "Research pest control companies in the specified target market, gathering information about company size, locations, services offered, current training programs, key decision makers, and regulatory compliance needs"
+    agent: "market_researcher"
+    expected_output: "Comprehensive company profiles including business details, contact information, training gaps, and market intelligence"
     
-  - name: "Analysis Task"
-    description: "Analyze the research findings and provide insights"
-    agent: "analyst"
-    expected_output: "Detailed analysis with insights and recommendations"
-    context: "Use the research findings from the previous task"
+  - name: "Opportunity Analysis Task"
+    description: "Analyze the research data to identify specific training needs, calculate potential value proposition, assess decision maker priorities, and determine best approach strategy for each prospect"
+    agent: "opportunity_analyst"
+    expected_output: "Detailed opportunity assessment with training needs analysis, value proposition recommendations, and sales approach strategy"
+    context: "Use the market research findings from the previous task"
+
+  - name: "Campaign Creation Task"
+    description: "Create personalized sales campaigns including email templates, phone scripts, and value propositions tailored to each prospect's specific needs and pain points"
+    agent: "sales_campaign_creator"
+    expected_output: "Complete sales campaign package with personalized outreach materials, talking points, and follow-up sequences"
+    context: "Use both the market research and opportunity analysis from previous tasks"
 
 # Global settings
 settings:
   verbose: true
-  max_iterations: 3
-  memory: true 
+  max_iterations: 5
+  memory: true
+  target_market: "to_be_specified"  # Will be provided when running campaigns 
