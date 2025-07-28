@@ -177,4 +177,4 @@ api_keys.json
 
 # Backup files
 *.bak
-*.backup 
+*.backup google_credentials.json
