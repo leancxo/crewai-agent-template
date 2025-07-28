@@ -1,0 +1,52 @@
+# Orlando, FL Market Campaign
+# Pest Pro University Sales Automation - Orlando Test Campaign
+
+crew:
+  name: "Orlando FL Market Campaign"
+  description: "AI-powered sales campaign targeting pest control companies in the Orlando, Florida market"
+  agents:
+    - name: "market_researcher"
+      class: "ResearcherAgent"
+      module: "agents.researcher_agent"
+      enabled: true
+      order: 1
+      
+    - name: "opportunity_analyst"
+      class: "AnalystAgent"
+      module: "agents.analyst_agent"
+      enabled: true
+      order: 2
+
+    - name: "sales_campaign_creator"
+      class: "SalesCampaignAgent"
+      module: "agents.sales_campaign_agent"
+      enabled: true
+      order: 3
+
+tasks:
+  - name: "Orlando Market Research"
+    description: "Research pest control companies in Orlando, Florida and surrounding areas. Focus on companies with 5+ employees, identify decision makers, assess current training methods, and analyze CEU compliance needs in Florida market."
+    agent: "market_researcher"
+    expected_output: "Comprehensive list of Orlando pest control companies with contact information, business details, training challenges, and market intelligence"
+    
+  - name: "Orlando Opportunity Analysis"
+    description: "Analyze Orlando pest control companies to identify specific training gaps, calculate ROI potential, assess Florida CEU requirements impact, and determine best value proposition approach for each prospect"
+    agent: "opportunity_analyst"
+    expected_output: "Detailed opportunity assessment with training needs analysis, value proposition recommendations, and prioritized prospect list for Orlando market"
+    context: "Use the Orlando market research findings from the previous task"
+
+  - name: "Orlando Campaign Creation"
+    description: "Create personalized sales campaigns for Orlando pest control companies including email templates with Florida-specific benefits, phone scripts mentioning local competition, and value propositions emphasizing cost savings in the Florida market"
+    agent: "sales_campaign_creator"
+    expected_output: "Complete Orlando-specific sales campaign package with personalized outreach materials, local market references, and Florida CEU compliance messaging"
+    context: "Use both the market research and opportunity analysis from previous tasks"
+
+# Campaign-specific settings
+settings:
+  verbose: true
+  max_iterations: 5
+  memory: true
+  target_market: "Orlando, Florida"
+  campaign_name: "Orlando FL Q1 2024"
+  state_ceu_requirements: "Florida - CEU requirements vary by license type"
+  local_market_focus: "Theme parks, hospitality, residential growth" 

@@ -1,23 +1,41 @@
 from crewai import Agent
-from tools.pest_control_research_tool import PestControlResearchTool
+from tools.web_scraping_tool import WebScrapingTool
 
-class ResearcherAgent:
-    """A specialized research agent focused on pest control market intelligence and lead research."""
+def create_pest_control_researcher():
+    """Create the Pest Control Market Researcher Agent with real web scraping capabilities."""
     
-    @staticmethod
-    def create():
-        """Create and return a configured pest control market researcher agent."""
-        return Agent(
-            name="Pest Control Market Researcher",
-            role="Market Intelligence Specialist",
-            goal="Research and analyze pest control companies to identify training needs, business challenges, and sales opportunities for Pest Pro University",
-            backstory="""You are an expert market researcher specializing in the pest control industry. 
-            You have deep knowledge of pest control business operations, regulatory requirements, 
-            training challenges, and market trends. You excel at finding detailed information about 
-            companies, their size, locations, current training programs, compliance needs, and 
-            identifying decision makers. You understand the pain points of pest control businesses 
-            and can spot opportunities where Pest Pro University's training solutions would be valuable.""",
-            verbose=True,
-            allow_delegation=False,
-            tools=[PestControlResearchTool()]
-        ) 
+    researcher_agent = Agent(
+        role='Pest Control Market Researcher',
+        goal="""Find REAL pest control companies using web scraping from actual business directories, 
+        Google search results, and company websites. NO FAKE DATA - only verified, existing companies 
+        with actual contact information and business details.""",
+        
+        backstory="""You are a professional market researcher specializing in the pest control industry. 
+        Your job is to find real, existing pest control companies through web scraping and online research.
+        
+        You use advanced web scraping techniques to search:
+        - Google search results for pest control companies
+        - Yellow Pages business directories  
+        - Yelp business listings
+        - Company websites for detailed information
+        
+        You NEVER create fake companies or simulate data. Every company you find must be real 
+        and verifiable through their actual website and contact information.
+        
+        You follow web scraping best practices:
+        - Proper user agent headers to avoid blocking
+        - Rate limiting between requests (1-3 seconds)
+        - Respectful scraping with timeouts
+        - Error handling for failed requests
+        - Multiple source verification""",
+        
+        verbose=True,
+        allow_delegation=False,
+        tools=[WebScrapingTool()],
+        
+        # Web scraping expertise
+        max_execution_time=300,  # 5 minutes for thorough research
+        memory=True
+    )
+    
+    return researcher_agent 

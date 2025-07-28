@@ -1,16 +1,45 @@
 # cursor.rules
 
 # 🎯 Project Purpose:
-# This workspace is a reusable CrewAI agent template.
-# It is designed to launch agentic AI projects quickly and consistently by providing:
-# - A modular agent architecture
-# - Config-driven agent deployment
-# - Reusable tools and loaders
-# - Easy customization per use case
+# This workspace is a CrewAI agent template customized for Pest Pro University sales automation.
+# It uses three specialized agents to find, research, and create campaigns for real pest control companies.
+
+# 🏢 PEST PRO UNIVERSITY PROJECT CONTEXT:
+# - **Company**: Pest Pro University  
+# - **Contact**: Kurt@pestprouniversity.com, (801) 440-0271
+# - **Product**: Online training platform for pest control professionals
+# - **Key Features**: No contracts, unlimited users per branch, CEU credit approved in 22 states
+# - **Training Tracks**: Service Tech, Sales/Office, Business Management
+
+# ⚠️ CRITICAL: REAL RESEARCH ONLY - NO FAKE DATA ⚠️
+# This is a REAL business generating REAL revenue. All company data must be accurate and verified.
+# NEVER generate fictional companies, fake phone numbers, or made-up contact information.
+
+# 🤖 THREE-AGENT WORKFLOW (REAL RESEARCH REQUIRED):
+
+# 1. **ResearcherAgent** - Company Finder
+#    PRIMARY JOB: Find real pest control companies in target markets
+#    - Use web scraping to find actual companies
+#    - Extract REAL company names, addresses, phone numbers, websites
+#    - Verify companies actually exist and are active
+#    - NO FICTIONAL DATA ALLOWED
+
+# 2. **AnalystAgent** - Company Researcher  
+#    PRIMARY JOB: Research real companies found by Agent 1
+#    - Visit actual company websites to gather real information
+#    - Find real decision maker names (LinkedIn, About Us pages)
+#    - Assess actual training needs based on company profile
+#    - Calculate realistic ROI and deal size estimates
+
+# 3. **SalesCampaignAgent** - Communication Strategist
+#    PRIMARY JOB: Create personalized outreach for real companies
+#    - Craft emails using actual company names and details
+#    - Reference real services and challenges from research
+#    - Create market-specific messaging based on actual local market
 
 # 🧠 Cursor Behavior Guidelines:
 rules:
-  - Do not ask for overall purpose — assume this is a CrewAI-based, multi-agent framework.
+  - Do not ask for overall purpose — this is Pest Pro University sales automation using CrewAI.
   - Always respect the folder structure:
       - agents/ → where agent classes live
       - config/ → YAML files defining agent setups
@@ -19,6 +48,13 @@ rules:
       - main.py → Entrypoint script to launch a crew
       - .env.template → Do not overwrite
       - README.md → Provide simple setup and usage instructions
+
+  - **REAL RESEARCH REQUIREMENTS**:
+      - All company data must be from real sources (web scraping, APIs, directories)
+      - Verify company existence before adding to campaigns
+      - Use actual business websites, LinkedIn, Google Business listings
+      - Never generate fake phone numbers, emails, or contact names
+      - If real data cannot be found, explicitly state this limitation
 
   - When asked to "add an agent":
       - Create a new file in `agents/`
@@ -44,16 +80,19 @@ rules:
       - Handle environment variables with python-dotenv
       - Provide clear error messages for missing configs or API keys
 
-  - When adding tools:
+  - When adding tools for REAL RESEARCH:
       - Place them in `tools/`
-      - Include a clear interface like `run()` or `__call__()`
-      - Tools should be easy to assign to agents via config
+      - Include web scraping capabilities (requests, BeautifulSoup)
+      - Add business directory API integrations
+      - Implement data verification and validation
       - Inherit from `langchain.tools.BaseTool`
       - Implement both `_run` and `_arun` methods
       - Include proper error handling and validation
 
   - When installing libraries:
       - Add to `requirements.txt`
+      - Include web scraping libraries (requests, beautifulsoup4, scrapy)
+      - Add data processing tools (pandas for company data)
       - Keep dependencies minimal and aligned with CrewAI, YAML parsing, and project needs
       - Use version constraints (>=) for flexibility
       - Comment out optional dependencies that can be uncommented as needed
@@ -100,7 +139,51 @@ rules:
       - Consider async operations for I/O-bound tasks
 
 # 💡 Philosophy:
-# This workspace is designed to be cloned per project and adapted. All code should be modular, clean, and easily replaceable.
-# Cursor should assume the user is launching real-world projects using this framework for client work or internal R&D.
-# Focus on production-ready code that can be deployed and maintained in enterprise environments.
-# Prioritize clarity, maintainability, and extensibility over clever optimizations. 
+# This workspace generates real revenue for Pest Pro University through accurate prospect research.
+# All code must be production-ready and generate verifiable, actionable sales leads.
+# Focus on accuracy, data quality, and real business results over demonstrations.
+# Prioritize clarity, maintainability, and extensibility over clever optimizations.
+
+# Cursor Rules for Pest Pro University CrewAI Agent Sales
+
+## Core Development Principles
+- Follow user instructions exactly as specified
+- Use existing tools and agents when possible
+- Maintain clean, readable code
+- Test configurations before deployment
+
+## Agent Configuration
+- Use YAML configuration files for agent setups
+- Store configurations in the `config/` directory
+- Follow the pattern established in existing agent files
+
+## Data Requirements
+- Always use tools for web scraping and research
+- Implement proper error handling for API calls
+- Cache results when appropriate to avoid repeated calls
+
+## Google Sheets Integration
+- Use the established Google Sheets authentication flow
+- Follow the pattern in `setup_google_sheets_auth.py`
+- Always test connections before data operations
+
+## Company Research Requirements
+**CRITICAL: NO FAKE DATA EVER**
+- NEVER generate or create fake company data
+- NEVER use fake phone numbers (like 555-xxx-xxxx)
+- NEVER create fake emails or contact information
+- ONLY use real, verified companies with actual contact details
+- If real data isn't available, find more real companies through research
+- All company information must be verifiable through web research
+- When in doubt, use fewer real companies rather than any fake data
+
+## File Organization
+- Keep related functionality in dedicated files
+- Use descriptive naming conventions
+- Document complex logic with comments
+- Clean up temporary files after use
+
+## Testing
+- Test agent configurations with small datasets first
+- Verify Google Sheets connections before bulk operations
+- Validate web scraping results before processing 
